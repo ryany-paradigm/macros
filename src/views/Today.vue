@@ -13,15 +13,13 @@
 </template>
 
 <script>
-import created from '@/created'
-
 export default {
   data () {
     return {
       proteins: 0,
       carbs: 0,
       fats: 0,
-      interactors: {}
+      calories: 0
     }
   },
 
@@ -38,7 +36,7 @@ export default {
     }
   },
 
-  emits: ['balanceChanged'],
-  created
+  inject: ['interactors'],
+  emits: ['balanceChanged']
 }
 </script>

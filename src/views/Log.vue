@@ -59,8 +59,6 @@
 </template>
 
 <script>
-import storeInteractors from '@/created'
-
 export default {
   data () {
     return {
@@ -69,11 +67,11 @@ export default {
       proteins: 0,
       carbs: 0,
       fats: 0,
-      eaten: [],
-      interactors: {}
+      eaten: []
     }
   },
 
+  inject: ['interactors'],
   methods: {
     getEaten () {
       this.eaten = this.$store.state.intake.eaten
@@ -101,7 +99,6 @@ export default {
 
   emits: ['balanceChanged'],
   created () {
-    storeInteractors.call(this)
     this.getEaten()
   }
 }
