@@ -20,6 +20,12 @@ describe('The macros entity', () => {
     expect(macros.fats).to.equal(3)
   })
 
+  describe('calories message', () => {
+    it('will accurately total the amount of calories from the given macros', () => {
+      expect(macros.calories).to.equal(39)
+    })
+  })
+
   describe('add message', () => {
     let result
 
@@ -111,6 +117,16 @@ describe('The macros entity', () => {
       const twos = new Macros(2, 2, 2)
       expect(twos.factor(ones)).to.equal(2)
       expect(ones.factor(twos)).to.equal(0.5)
+    })
+  })
+
+  describe('empty', () => {
+    it('will make an empty macros object', () => {
+      expect(Macros.empty).to.deep.equal({
+        proteins: 0,
+        carbs: 0,
+        fats: 0
+      })
     })
   })
 })

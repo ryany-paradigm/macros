@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import balance from './balance'
 
 export default createStore({
   state: {
@@ -8,5 +9,9 @@ export default createStore({
   actions: {
   },
   modules: {
+    balance: {
+      namespaced: true,
+      ...balance
+    }
   }
 })

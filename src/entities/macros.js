@@ -1,8 +1,16 @@
 export default class Macros {
+  static get empty () {
+    return new Macros(0, 0, 0)
+  }
+
   constructor (proteins, carbs, fats) {
     this.proteins = proteins
     this.carbs = carbs
     this.fats = fats
+  }
+
+  get calories () {
+    return 4 * this.proteins + 4 * this.carbs + 9 * this.fats
   }
 
   add (second) {

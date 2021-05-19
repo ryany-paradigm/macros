@@ -1,10 +1,41 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/today">Today's Balance</router-link> |
+    <router-link to="/log">Intake Log</router-link> |
+    <router-link to="/food">Food Store</router-link>
   </div>
+
+  <table class="balance">
+    <caption>Balance</caption>
+    <tr>
+      <th>Proteins</th>
+      <th>Carbs</th>
+      <th>Fats</th>
+    </tr>
+
+    <tr>
+      <td>{{balance.proteins}}</td>
+      <td>{{balance.carbs}}</td>
+      <td>{{balance.fats}}</td>
+    </tr>
+  </table>
+
   <router-view/>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState('balance', ['balance'])
+  },
+
+  created () {
+  }
+}
+</script>
 
 <style lang="less">
 #app {
@@ -26,5 +57,10 @@
       color: #42b983;
     }
   }
+}
+
+.balance {
+  margin: auto auto;
+  text-align: left;
 }
 </style>

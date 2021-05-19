@@ -38,6 +38,7 @@
     "jsdom-global": "^3.0.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "mock-local-storage": "^1.1.17"
+    "mock-local-storage": "^1.1.17",
+    "sinon": "^10.0.0"
   }
 }
