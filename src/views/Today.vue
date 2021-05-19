@@ -29,9 +29,9 @@ export default {
     startTheDay () {
       const interactor = this.interactors.make('start day')
       interactor.process({
-        proteins: parseInt(this.proteins),
-        carbs: parseInt(this.carbs),
-        fats: parseInt(this.fats)
+        proteins: parseFloat(this.proteins),
+        carbs: parseFloat(this.carbs),
+        fats: parseFloat(this.fats)
       })
 
       this.$emit('balanceChanged')

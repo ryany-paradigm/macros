@@ -83,11 +83,11 @@ export default {
       const interactor = this.interactors.make('track eaten')
       interactor.process({
         name: this.name,
-        quantity: parseInt(this.quantity),
+        quantity: parseFloat(this.quantity),
         macros: {
-          proteins: parseInt(this.proteins),
-          carbs: parseInt(this.carbs),
-          fats: parseInt(this.fats)
+          proteins: parseFloat(this.proteins),
+          carbs: parseFloat(this.carbs),
+          fats: parseFloat(this.fats)
         }
       })
 
