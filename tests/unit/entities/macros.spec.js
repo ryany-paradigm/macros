@@ -125,7 +125,8 @@ describe('The macros entity', () => {
       expect(Macros.empty).to.deep.equal({
         proteins: 0,
         carbs: 0,
-        fats: 0
+        fats: 0,
+        calories: 0
       })
     })
   })

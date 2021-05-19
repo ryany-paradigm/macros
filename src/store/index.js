@@ -1,17 +1,17 @@
 import { createStore } from 'vuex'
 import balance from './balance'
+import intake from './intake'
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
     balance: {
       namespaced: true,
       ...balance
+    },
+
+    intake: {
+      namespaced: true,
+      ...intake
     }
   }
 })

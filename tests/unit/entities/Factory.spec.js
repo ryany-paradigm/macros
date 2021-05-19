@@ -9,13 +9,25 @@ describe('The entity factory', () => {
     factory = new EntityFactory()
   })
 
-  it('will make macros', () => {
+  it('will make macros with no arguments', () => {
     const macros = factory.make('macros')
     expect(macros).to.be.instanceof(Macros)
     expect(macros).to.deep.equal({
       proteins: 0,
       carbs: 0,
-      fats: 0
+      fats: 0,
+      calories: 0
+    })
+  })
+
+  it('will make macros with arguments', () => {
+    const macros = factory.make('macros', 1, 2, 3)
+    expect(macros).to.be.instanceof(Macros)
+    expect(macros).to.deep.equal({
+      proteins: 1,
+      carbs: 2,
+      fats: 3,
+      calories: 39
     })
   })
 

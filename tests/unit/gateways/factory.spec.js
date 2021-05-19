@@ -2,6 +2,7 @@ import { expect } from 'chai'
 import { spy } from 'sinon'
 import GatewayFactory from '@/gateways/factory'
 import BalanceGateway from '@/gateways/balance'
+import IntakeGateway from '@/gateways/intake'
 
 describe('The gateway factory', () => {
   let factory
@@ -15,6 +16,11 @@ describe('The gateway factory', () => {
   it('will make balance gateways', () => {
     const gateway = factory.make('balance')
     expect(gateway).to.be.instanceof(BalanceGateway)
+  })
+
+  it('will make intake gateways', () => {
+    const gateway = factory.make('intake')
+    expect(gateway).to.be.instanceof(IntakeGateway)
   })
 
   it('will throw with invalid types', () => {

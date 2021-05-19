@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" @balance-changed="getBalance">
     <router-link to="/">Home</router-link> |
     <router-link to="/today">Today's Balance</router-link> |
     <router-link to="/log">Intake Log</router-link> |
@@ -26,13 +26,27 @@
 
 <script>
 import { mapState } from 'vuex'
+import storeInteractors from '@/created'
 
 export default {
+  data () {
+    return {
+      interactors: {}
+    }
+  },
+
   computed: {
     ...mapState('balance', ['balance'])
   },
 
+  methods: {
+    getBalance () {
+    }
+  },
+
   created () {
+    storeInteractors.call(this)
+    this.getBalance()
   }
 }
 </script>

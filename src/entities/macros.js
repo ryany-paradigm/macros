@@ -4,6 +4,10 @@ export default class Macros {
   }
 
   constructor (proteins, carbs, fats) {
+    const descriptor =
+      Object.getOwnPropertyDescriptor(Macros.prototype, 'calories')
+
+    Object.defineProperty(this, 'calories', { ...descriptor, enumerable: true })
     this.proteins = proteins
     this.carbs = carbs
     this.fats = fats

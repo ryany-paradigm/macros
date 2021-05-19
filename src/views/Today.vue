@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import InteractorFactory from '@/interactors/factory'
-import GatewayFactory from '@/gateways/factory'
+import created from '@/created'
 
 export default {
   data () {
@@ -37,9 +36,6 @@ export default {
     }
   },
 
-  created () {
-    const gateways = new GatewayFactory(this.$store)
-    this.interactors = new InteractorFactory(gateways)
-  }
+  created
 }
 </script>
