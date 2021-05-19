@@ -1,5 +1,45 @@
 <template>
   <div class="today">
     <h1>This is today's balance page</h1>
+
+    <label for="proteins">Proteins</label>
+    <input v-model="proteins" name="proteins" type="number" label="Proteins" />
+    <label for="carbs">Carbs</label>
+    <input v-model="carbs" name="carbs" type="number" label="Carbs" />
+    <label for="fats">Fats</label>
+    <input v-model="fats" name="fats" type="number" label="Fats" />
+    <button @click="startTheDay">Start the Day</button>
   </div>
 </template>
+
+<script>
+import InteractorFactory from '@/interactors/factory'
+import GatewayFactory from '@/gateways/factory'
+
+export default {
+  data () {
+    return {
+      proteins: 0,
+      carbs: 0,
+      fats: 0,
+      interactors: {}
+    }
+  },
+
+  methods: {
+    startTheDay () {
+      const interactor = this.interactors.make('start day')
+      interactor.process({
+        proteins: this.proteins,
+        carbs: this.carbs,
+        fats: this.fats
+      })
+    }
+  },
+
+  created () {
+    const gateways = new GatewayFactory(this.$store)
+    this.interactors = new InteractorFactory(gateways)
+  }
+}
+</script>
