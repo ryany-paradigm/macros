@@ -3,6 +3,17 @@ import { spy } from 'sinon'
 import GatewayFactory from '@/gateways/factory'
 
 describe('The intake gateway', () => {
+  it('will get the current intakes', () => {
+    const eaten = [
+      { name: 'mocha', quantity: 1, macros: { proteins: 10, carbs: 38, fats: 17 } }
+    ]
+    const store = { state: { intake: { eaten } } }
+    const factory = new GatewayFactory(store)
+    const gateway = factory.make('intake')
+    const result = gateway.get({})
+    expect(result.eaten).to.deep.equal(eaten)
+  })
+
   it('will add records to the intake log', () => {
     const dispatch = spy()
     const store = { dispatch }

@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" @balance-changed="getBalance">
+  <div id="nav" >
     <router-link to="/">Home</router-link> |
     <router-link to="/today">Today's Balance</router-link> |
     <router-link to="/log">Intake Log</router-link> |
@@ -12,35 +12,36 @@
       <th>Proteins</th>
       <th>Carbs</th>
       <th>Fats</th>
+      <th>Calories</th>
     </tr>
 
     <tr>
       <td>{{balance.proteins}}</td>
       <td>{{balance.carbs}}</td>
       <td>{{balance.fats}}</td>
+      <td>{{balance.calories}}</td>
     </tr>
   </table>
 
-  <router-view/>
+  <router-view @balance-changed="getBalance" />
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import storeInteractors from '@/created'
 
 export default {
   data () {
     return {
+      balance: { proteins: 0, carbs: 0, fats: 0, calories: 0 },
       interactors: {}
     }
   },
 
-  computed: {
-    ...mapState('balance', ['balance'])
-  },
-
   methods: {
     getBalance () {
+      const interactor = this.interactors.make('get balance')
+      const response = interactor.process({})
+      this.balance = response.balance
     }
   },
 

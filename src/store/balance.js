@@ -2,7 +2,8 @@ const initial = {
   balance: {
     proteins: 0,
     carbs: 0,
-    fats: 0
+    fats: 0,
+    calories: 0
   }
 }
 

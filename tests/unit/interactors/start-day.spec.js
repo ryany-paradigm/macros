@@ -17,8 +17,10 @@ describe('The start day interactor', () => {
 
     // eslint-disable-next-line no-unused-expressions
     expect(response).to.be.empty
-
-    // eslint-disable-next-line no-unused-expressions
-    expect(store.called).to.be.true
+    const call = store.getCall(0)
+    expect(call.args).to.deep.equal([{
+      ...request,
+      calories: 3098
+    }])
   })
 })

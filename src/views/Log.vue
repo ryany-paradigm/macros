@@ -59,8 +59,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import created from '@/created'
+import storeInteractors from '@/created'
 
 export default {
   data () {
@@ -70,33 +69,41 @@ export default {
       proteins: 0,
       carbs: 0,
       fats: 0,
+      eaten: [],
       interactors: {}
     }
   },
 
-  computed: {
-    ...mapState('intake', ['eaten'])
-  },
-
   methods: {
+    getEaten () {
+      this.eaten = this.$store.state.intake.eaten
+    },
+
     trackEaten () {
       const interactor = this.interactors.make('track eaten')
       interactor.process({
         name: this.name,
-        quantity: this.quantity,
+        quantity: parseInt(this.quantity),
         macros: {
-          proteins: this.proteins,
-          carbs: this.carbs,
-          fats: this.fats
+          proteins: parseInt(this.proteins),
+          carbs: parseInt(this.carbs),
+          fats: parseInt(this.fats)
         }
       })
+
+      this.getEaten()
+      this.$emit('balanceChanged')
     },
 
     removeEaten () {
     }
   },
 
-  created
+  emits: ['balanceChanged'],
+  created () {
+    storeInteractors.call(this)
+    this.getEaten()
+  }
 }
 </script>
 

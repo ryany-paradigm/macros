@@ -3,6 +3,15 @@ import { spy } from 'sinon'
 import GatewayFactory from '@/gateways/factory'
 
 describe('The balance gateway', () => {
+  it('will get balances', () => {
+    const balance = { proteins: 100, carbs: 100, fats: 100, calories: 1700 }
+    const store = { state: { balance: { balance } } }
+    const factory = new GatewayFactory(store)
+    const gateway = factory.make('balance')
+    const result = gateway.get({})
+    expect(result.balance).to.deep.equal(balance)
+  })
+
   it('will store balances', () => {
     const dispatch = spy()
     const store = { dispatch }

@@ -1,10 +1,18 @@
 export default class {
-  constructor (gateways) {
+  constructor ({ entities, gateways }) {
+    this.entities = entities
     this.gateway = gateways.make('balance')
   }
 
-  process (request) {
-    this.gateway.store(request)
+  process ({ proteins, carbs, fats }) {
+    const macros = this.entities.make('macros', proteins, carbs, fats)
+    this.gateway.store({
+      proteins,
+      carbs,
+      fats,
+      calories: macros.calories
+    })
+
     return {}
   }
 }
