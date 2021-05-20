@@ -1,4 +1,5 @@
 import BalanceGateway from '@/gateways/balance'
+import GoalGateway from '@/gateways/goal'
 import IntakeGateway from '@/gateways/intake'
 import WeightGateway from '@/gateways/weight'
 
@@ -10,6 +11,7 @@ export default class {
   make (type) {
     const conversions = {
       balance: BalanceGateway,
+      goal: GoalGateway,
       intake: IntakeGateway,
       weight: WeightGateway
     }

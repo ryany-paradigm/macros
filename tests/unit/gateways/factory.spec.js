@@ -2,6 +2,7 @@ import { expect } from 'chai'
 import { spy } from 'sinon'
 import GatewayFactory from '@/gateways/factory'
 import BalanceGateway from '@/gateways/balance'
+import GoalGateway from '@/gateways/goal'
 import IntakeGateway from '@/gateways/intake'
 import WeightGateway from '@/gateways/weight'
 
@@ -22,6 +23,11 @@ describe('The gateway factory', () => {
   it('will make intake gateways', () => {
     const gateway = factory.make('intake')
     expect(gateway).to.be.instanceof(IntakeGateway)
+  })
+
+  it('will make goal gateways', () => {
+    const gateway = factory.make('goal')
+    expect(gateway).to.be.instanceof(GoalGateway)
   })
 
   it('will make weight gateways', () => {
