@@ -1,8 +1,10 @@
 <template>
   <div id="nav" >
     <router-link to="/">Home</router-link> |
-    <router-link to="/today">Today's Balance</router-link> |
-    <router-link to="/log">Intake Log</router-link> |
+    <router-link to="/season">Goal &amp; Adjustment</router-link> |
+    <router-link to="/week">Schedule &amp; Weigh-Ins</router-link> |
+    <router-link to="/exercise">Exercise Log</router-link> |
+    <router-link to="/intake">Intake Log</router-link> |
     <router-link to="/food">Food Store</router-link>
   </div>
 

@@ -8,20 +8,36 @@ const routes = [
     component: Home
   },
   {
-    path: '/today',
-    name: 'Today',
+    path: '/season',
+    name: 'Season',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "today" */ '../views/Today.vue')
+    component: () => import(/* webpackChunkName: "season" */ '../views/Season.vue')
   },
   {
-    path: '/log',
+    path: '/week',
+    name: 'Week',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "week" */ '../views/Week.vue')
+  },
+  {
+    path: '/exercise',
+    name: 'Exercise Log',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "exercise" */ '../views/Exercise.vue')
+  },
+  {
+    path: '/intake',
     name: 'Intake Log',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "log" */ '../views/Log.vue')
+    component: () => import(/* webpackChunkName: "intake" */ '../views/Intake.vue')
   },
   {
     path: '/food',

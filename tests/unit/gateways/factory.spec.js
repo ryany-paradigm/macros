@@ -3,6 +3,7 @@ import { spy } from 'sinon'
 import GatewayFactory from '@/gateways/factory'
 import BalanceGateway from '@/gateways/balance'
 import IntakeGateway from '@/gateways/intake'
+import WeightGateway from '@/gateways/weight'
 
 describe('The gateway factory', () => {
   let factory
@@ -21,6 +22,11 @@ describe('The gateway factory', () => {
   it('will make intake gateways', () => {
     const gateway = factory.make('intake')
     expect(gateway).to.be.instanceof(IntakeGateway)
+  })
+
+  it('will make weight gateways', () => {
+    const gateway = factory.make('weight')
+    expect(gateway).to.be.instanceof(WeightGateway)
   })
 
   it('will throw with invalid types', () => {

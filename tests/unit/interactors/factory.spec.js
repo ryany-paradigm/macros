@@ -3,8 +3,10 @@ import { stub } from 'sinon'
 import EntityFactory from '@/entities/factory'
 import InteractorFactory from '@/interactors/factory'
 import GetBalanceInteractor from '@/interactors/get-balance'
+import SetGoalInteractor from '@/interactors/set-goal'
 import StartDayInteractor from '@/interactors/start-day'
 import TrackEatenInteractor from '@/interactors/track-eaten'
+import WeighInInteractor from '@/interactors/weigh-in'
 
 describe('The interactor factory', () => {
   let factory
@@ -16,18 +18,28 @@ describe('The interactor factory', () => {
   })
 
   it('will make get balance interactors', () => {
-    const interactor = factory.make('get balance')
-    expect(interactor).to.be.instanceof(GetBalanceInteractor)
+    expectInteractorFrom('get balance', GetBalanceInteractor)
+  })
+
+  const expectInteractorFrom = (text, type) => {
+    const interactor = factory.make(text)
+    expect(interactor).to.be.instanceof(type)
+  }
+
+  it('will make a weigh-in interactor', () => {
+    expectInteractorFrom('weigh-in', WeighInInteractor)
+  })
+
+  it('will make set goal interactors', () => {
+    expectInteractorFrom('set goal', SetGoalInteractor)
   })
 
   it('will make start day interactors', () => {
-    const interactor = factory.make('start day')
-    expect(interactor).to.be.instanceof(StartDayInteractor)
+    expectInteractorFrom('start day', StartDayInteractor)
   })
 
   it('will make track eaten interactors', () => {
-    const interactor = factory.make('track eaten')
-    expect(interactor).to.be.instanceof(TrackEatenInteractor)
+    expectInteractorFrom('track eaten', TrackEatenInteractor)
   })
 
   it('will throw with invalid types', () => {

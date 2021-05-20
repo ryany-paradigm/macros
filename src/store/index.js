@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import balance from './balance'
 import intake from './intake'
+import weight from './weight'
 
 export default createStore({
   modules: {
@@ -12,6 +13,11 @@ export default createStore({
     intake: {
       namespaced: true,
       ...intake
+    },
+
+    weight: {
+      namespaced: true,
+      ...weight
     }
   }
 })

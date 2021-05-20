@@ -1,5 +1,6 @@
 import BalanceGateway from '@/gateways/balance'
 import IntakeGateway from '@/gateways/intake'
+import WeightGateway from '@/gateways/weight'
 
 export default class {
   constructor (store) {
@@ -7,12 +8,14 @@ export default class {
   }
 
   make (type) {
-    if (type === 'balance') {
-      return new BalanceGateway(this.store)
+    const conversions = {
+      balance: BalanceGateway,
+      intake: IntakeGateway,
+      weight: WeightGateway
     }
 
-    if (type === 'intake') {
-      return new IntakeGateway(this.store)
+    if (Object.hasOwnProperty.call(conversions, type)) {
+      return new conversions[type](this.store)
     }
 
     throw new TypeError(`Invalid gateway type: ${type}`)
